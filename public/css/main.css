@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #F6F8FA;
+}
+
+input:not([type='submit']) {
+    background: #F6F8FA;
+}
+
+div.form-group label {
+    font-weight: bolder;
+}
