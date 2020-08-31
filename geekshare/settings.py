@@ -30,10 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
+    'django.contrib.humanize',
 
     #   rest framework settings
-    'rest_framework'
+    'rest_framework',
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -142,3 +144,8 @@ MESSAGE_TAGS = {
     messages.WARNING : 'warning'
 }
 
+#   Email setttings
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "postmaster@sandboxed1faec5daa049b880d1090a3166ec89.mailgun.org"
+EMAIL_HOST_PASSWORD = "195c0e41c618ede7035309b94cb7ecc5-87c34c41-82eb88d7"
