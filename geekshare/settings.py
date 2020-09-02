@@ -145,7 +145,13 @@ MESSAGE_TAGS = {
 }
 
 #   Email setttings
-EMAIL_HOST = 'smtp.mailgun.org'
+# EMAIL_HOST = 'smtp.mailgun.org'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = "postmaster@sandboxed1faec5daa049b880d1090a3166ec89.mailgun.org"
+# EMAIL_HOST_PASSWORD = "195c0e41c618ede7035309b94cb7ecc5-87c34c41-82eb88d7"
+
+EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "postmaster@sandboxed1faec5daa049b880d1090a3166ec89.mailgun.org"
-EMAIL_HOST_PASSWORD = "195c0e41c618ede7035309b94cb7ecc5-87c34c41-82eb88d7"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ankitavi1311@gmail.com'
+EMAIL_HOST_PASSWORD = 'AnkitSingh@383'
