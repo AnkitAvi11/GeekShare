@@ -4,16 +4,37 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .decorators import isAuthenticated
 import re 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 @isAuthenticated
 def loginUser(request) : 
-    context = {
-        "next" : "/"
-    }
+    redirect_url = request.GET.get('next', '/')
+
     if request.method == 'POST' : 
-        return JsonResponse(request.POST)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if isEmail(username) : 
+            username = User.objects.get(email=username)
+
+        user = authenticate(username=username, password=password)
+
+        if user is None : 
+            messages.error(request, 'Invalid user credentials entered')
+            return redirect('/account/login/?next={}'.format(redirect_url))
+
+        login(request, user)
+        return redirect(redirect_url)
+
     else : 
-        return render(request, 'auth/login.html')
+        return render(
+            request,
+            'auth/login.html',
+            {
+                "next" : redirect_url
+            }
+        )
 
 
 def isEmail(email) : 
@@ -63,3 +84,7 @@ def register(request) :
     else : 
         return render(request, 'auth/signup.html', context)
 
+
+@login_required(login_url='/account/login/')
+def setting(request) : 
+    return HttpResponse('asdasd')
