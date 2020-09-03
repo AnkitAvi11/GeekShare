@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 @isAuthenticated
 def loginUser(request) : 
+    #   url to be directed
     redirect_url = request.GET.get('next', '/')
 
     if request.method == 'POST' : 

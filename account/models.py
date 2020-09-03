@@ -33,9 +33,33 @@ class UserProfile(models.Model) :
         self.profile_image.delete()
         return super().delete(*args, **kwargs)
 
+    #   function to get the total number of Notifications
+    def countNotifications(self) : 
+        total = Notification.objects.filter(user=self.user).exclude(is_read=True).count()
+        print("total = ", total)
+        return total
+
+    #    method to get the notifications
+    def getNotifications(self) : 
+        return Notification.objects.filter(user=self.user).exclude(is_read=True)
+
 
 def createProfile(sender, **kwargs) : 
     if kwargs['created'] : 
         UserProfile.objects.create(user=kwargs['instance'])
 
 post_save.connect(createProfile, sender=User)
+
+#   model for notification for the user to track comments or likes on the posts
+class Notification(models.Model) : 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=500, blank=False, null=False)
+    link = models.CharField(max_length=200)
+    time = models.DateTimeField(default=timezone.now())
+    is_read = models.BooleanField(default=False)    
+
+    def __str__(self) : 
+        return self.title
+
+    
+

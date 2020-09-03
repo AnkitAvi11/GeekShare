@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{%block title%} | Set a new password {%endblock%}
+{%block content%}
+
+    <style>
+        input[type='password'] {
+            width : 100%;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        label{
+            font-weight: bolder;
+        }
+        ul.errorlist {
+            color : red;
+            font-weight: bolder;
+        }
+    </style>
+
+    <div class="container" style="margin-top:20px;">
+        <div class="row">
+            <div class="col-sm-5" style="margin:auto">
+                <div class="card">
+                    <div class="card-body">
+                        {%if form%} 
+                        <form action="" method="post">
+                            {%csrf_token%}
+                            <h4>Set a new password</h4>
+                            {{form.as_p}}
+                            <div class="form-group">
+                                <input type="submit" value="Reset password" class="btn btn-dark">
+                            </div>
+                        </form>
+                        {%else%}
+                            <h4>Password reset failed</h4>
+                            <p>
+                                This link has expired and is invalid now. You can request a new password reset link from here.
+                            </p>
+                            <p>
+                                <a href="{%url 'password_reset'%}">Reset password</a>
+                            </p>
+                        {%endif%}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
