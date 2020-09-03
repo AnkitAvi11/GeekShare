@@ -3,8 +3,9 @@
 }
 
 body {
-    background: #F6F8FA;
+    background: #F6F8FA !important;
 }
+  
 
 input:not([type='submit']) {
     background: #F6F8FA;
