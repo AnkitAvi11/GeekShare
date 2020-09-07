@@ -21,6 +21,7 @@ def loginUser(request) :
 
         user = authenticate(username=username, password=password)
 
+        #   if the user isn't authenticated
         if user is None : 
             messages.error(request, 'Invalid user credentials entered')
             return redirect('/account/login/?next={}'.format(redirect_url))
@@ -37,11 +38,13 @@ def loginUser(request) :
             }
         )
 
-
+#   function to validate user email address
 def isEmail(email) : 
     regex = re.compile('^([a-zA-Z0-9\-\_\.])+\@([a-zA-Z0-9\-\_\.])+\.([a-zA-Z0-9]{2,4})$')
     return regex.match(email)
 
+
+#   function to register a user
 @isAuthenticated
 def register(request) : 
     context = {}
@@ -86,6 +89,7 @@ def register(request) :
         return render(request, 'auth/signup.html', context)
 
 
+#   user setting function view
 @login_required(login_url='/account/login/')
 def setting(request) : 
     return HttpResponse('asdasd')

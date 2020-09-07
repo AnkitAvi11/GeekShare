@@ -27,7 +27,7 @@
             <!-- Notification panel -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell"></i> <span class="badge badge-info">{{user.userprofile.countNotifications}}</span>
+                    <i class="fas fa-bell"></i> <span class="badge badge-warning">{{user.userprofile.countNotifications}}</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 250px;">
                     {%for notification in user.userprofile.getNotifications%}
@@ -54,7 +54,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">Upload notes</a>
+                  <a class="dropdown-item" href="#">Discussions</a>
+                  <a class="dropdown-item" href="#">Add Project</a>
                   <a class="dropdown-item" href="#">Settings</a>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Help</a>
                   <a class="dropdown-item" href="#">Logout</a>
                 </div>
