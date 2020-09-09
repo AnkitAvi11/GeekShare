@@ -5,6 +5,11 @@
     .card-columns {
         column-count: 2;
     }
+    @media screen and (max-width:600px){
+        .card-columns {
+            column-count: 1;
+        }
+    }
 </style>
 <div class="container" style="margin-top:20px">
     <div class="row">
@@ -33,9 +38,9 @@
                     <div class="card">
                         <div class="card-body">
                             {%if note.note_image%}
-                            <img src="{{note.note_image.url}}" alt="" style="width: 100%;">
+                            <img src="{{note.note_image.url}}" alt="" style="width: 100%;display:block;margin-bottom:20px">
                             {%endif%}
-                            <h5 style="margin-top: 20px;">{{note}}</h5>
+                            <h5>{{note}}</h5>
                             <p class="card-text">
                                 {{note.description}}
                             </p>

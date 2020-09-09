@@ -13,7 +13,15 @@ def view_notes(request):
     )
 
 def view_note_by_branch(request, branch) : 
+    notes = Note.objects.filter(branch=branch)
     return render(
         request, 
-        'notes/notes.html'
+        'notes/notes.html',
+        {"notes" : notes}
     )
+
+def add_note(request) : 
+    if request.method == 'POST' : 
+        pass
+    else : 
+        return HttpResponse('Add note')
